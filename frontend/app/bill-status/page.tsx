@@ -11,7 +11,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { getPublicBills, getTenantDashboard, type PublicBillRow } from '@/lib/api';
 import { getErrorMessage } from '@/lib/utils';
-import Image from 'next/image';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] as const;
 
@@ -287,8 +286,7 @@ export default function TenantBillBoardPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [search, setSearch] = useState('');
-    const monthlyBillsUrl =
-        typeof window !== 'undefined' ? window.location.href : 'https://housbilling-api.bdixmanager.workers.dev';
+    const monthlyBillsUrl = 'https://housebill.vercel.app/bill-status/';
     const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(
         monthlyBillsUrl
     )}`;
@@ -511,12 +509,12 @@ export default function TenantBillBoardPage() {
                         <p className="text-sm">Month: {fullMonthYearLabel(monthRecent)}</p>
                     </div>
                     <div className="text-center">
-                        <Image
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
                             src={qrSrc}
                             alt="Monthly bills QR"
                             width={80}
                             height={80}
-                            unoptimized
                             className="w-20 h-20 mx-auto border border-black/20 p-1"
                         />
                         <p className="text-[11px] mt-1">Scan to see Monthly Bills</p>
