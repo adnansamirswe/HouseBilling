@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+:root {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 6.5%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 6.5%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 142.1 76.2% 36.3%;
+  --primary-foreground: 355.7 100% 97.3%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 50.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 142.1 76.2% 36.3%;
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  border-color: hsl(var(--border));
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.card-premium {
+  background: linear-gradient(145deg, hsl(222.2 84% 7%), hsl(222.2 84% 5%));
+  border: 1px solid hsl(217.2 32.6% 20%);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.glass {
+  background: hsla(222.2, 84%, 8%, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid hsla(217.2, 32.6%, 25%, 0.5);
+}
+
+.scanner-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.scanner-guide-box {
+  width: 85%;
+  max-width: 320px;
+  height: 140px;
+  border: 3px solid hsl(142.1 76.2% 46%);
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 9999px hsla(0, 0%, 0%, 0.6),
+    0 0 30px hsla(142.1, 76.2%, 46%, 0.4);
+  animation: pulse-guide 2s ease-in-out infinite;
+}
+
+@keyframes pulse-guide {
+  0%,
+  100% {
+    box-shadow: 0 0 0 9999px hsla(0, 0%, 0%, 0.6), 0 0 30px hsla(142.1, 76.2%, 46%, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 9999px hsla(0, 0%, 0%, 0.6), 0 0 50px hsla(142.1, 76.2%, 46%, 0.6);
+  }
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid hsl(var(--border));
+  border-top-color: hsl(var(--primary));
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
