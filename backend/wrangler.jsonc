@@ -1,0 +1,31 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "housbilling-api",
+	"main": "src/index.ts",
+	"compatibility_date": "2024-12-01",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"observability": {
+		"enabled": true
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "housbilling-db",
+			"database_id": "b28758ee-acc8-4a1d-870c-6b9772b35329"
+		}
+	],
+	"r2_buckets": [
+		{
+			"binding": "BUCKET",
+			"bucket_name": "meter-evidence"
+		}
+	],
+	"ai": {
+		"binding": "AI"
+	},
+	"vars": {
+		"CORS_ORIGIN": "*"
+	}
+}
